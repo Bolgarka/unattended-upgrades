@@ -1,0 +1,6 @@
+#!/bin/sh
+# GPL-3 Copyright Canonical 2013
+
+juju-log "Installing unattended-upgrades"
+apt-get install -y unattended-upgrades
+

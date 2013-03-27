@@ -1,0 +1,22 @@
+=== `unattended-upgrades` ===
+
+This charm provides a subordinate service you can add to any master
+service to keep all packages up-to-date automatically, using the
+`unattended-upgrades` package.
+
+    $ juju deploy <master>
+    $ juju deploy unattended-upgrades
+    $ juju add-relation <master> unattended-upgrades
+
+=== Limitations ===
+
+Currently, no configuration is provided: unattended-upgrades provides the
+ability to select specific archives and origins for upgrading, but this
+package does not expose that functionality.
+
+`unattended-upgrades` does not upgrade packages with configuration changes
+to conffiles. This should be rare.
+
+Neither `unattended-upgrades` nor this charm will re-start services to use
+new libraries or executables. TODO: Check on libc upgrades. They might
+restart services.

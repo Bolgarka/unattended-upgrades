@@ -1,0 +1,17 @@
+#!/bin/sh
+# GPL-3 Copyright Canonical 2013
+
+juju-log "Forcing 10periodic to update package lists"
+cat > /etc/apt/apt.conf.d/10periodic << EOF
+APT::Periodic::Update-Package-Lists "1";
+APT::Periodic::Download-Upgradeable-Packages "0";
+APT::Periodic::AutocleanInterval "0";
+EOF
+
+juju-log "Installing new 20auto-upgrades to upgrade packages"
+cat > /etc/apt/apt.conf.d/20auto-upgrades << EOF
+APT::Periodic::Update-Package-Lists "1";
+APT::Periodic::Unattended-Upgrade "1";
+EOF
+
+juju-log "unattended-upgrades start completed"
